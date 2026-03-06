@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Paper Summarizer</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="logo-icon">&#128196;</div>
+      <h1>Paper Summarizer</h1>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="btn-nav-history" title="History">&#128337;</button>
+      <button class="icon-btn" id="btn-nav-settings" title="Settings">&#9881;</button>
+    </div>
+  </header>
+
+  <!-- ── Main View ── -->
+  <div class="view active" id="main-view">
+
+    <div class="page-info" id="page-info">
+      <div class="page-info-label">Current Page</div>
+      <div class="page-info-title" id="page-title">Loading...</div>
+    </div>
+
+    <button class="btn-primary" id="btn-generate">
+      <span class="btn-icon">&#9889;</span>
+      Generate Summary
+    </button>
+
+    <div class="status-bar" id="status-bar">
+      <div class="spinner" id="status-spinner"></div>
+      <span id="status-text"></span>
+    </div>
+
+    <!-- Summary Result -->
+    <div class="summary-card" id="summary-card">
+      <h2>Paper Summary</h2>
+
+      <div class="summary-section">
+        <div class="summary-section-label">Main Idea</div>
+        <div class="summary-section-content" id="summary-main-idea"></div>
+      </div>
+
+      <div class="summary-section">
+        <div class="summary-section-label">Key Contributions</div>
+        <ul class="summary-bullets" id="summary-contributions"></ul>
+      </div>
+
+      <div class="summary-section">
+        <div class="summary-section-label">Methods</div>
+        <div class="summary-section-content" id="summary-methods"></div>
+      </div>
+
+      <div class="summary-footer">
+        <button class="btn-secondary" id="btn-save">&#128190; Save</button>
+        <button class="btn-secondary" id="btn-copy">&#128203; Copy</button>
+        <button class="btn-secondary" id="btn-new">&#8635; New</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Settings View ── -->
+  <div class="view" id="settings-view">
+
+    <h2>Settings</h2>
+
+    <div class="field">
+      <label for="api-key-input">Groq API Key (Free)</label>
+      <div class="field-row">
+        <input type="password" id="api-key-input" placeholder="gsk_..." autocomplete="off" />
+        <button class="btn-save" id="btn-save-key">Save</button>
+      </div>
+      <div class="field-hint">
+        Get a free key at <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a> — no credit card needed.
+        Your key is stored locally in Chrome and never sent anywhere except the Groq API.
+      </div>
+    </div>
+
+    <div class="settings-status" id="settings-status"></div>
+
+    <button class="btn-secondary" id="btn-back-from-settings" style="margin-top:auto">&#8592; Back</button>
+
+  </div>
+
+  <!-- ── History View ── -->
+  <div class="view" id="history-view">
+
+    <div class="history-header">
+      <h2>Saved Summaries</h2>
+      <button class="btn-clear" id="btn-clear-history">Clear All</button>
+    </div>
+
+    <div class="history-list" id="history-list">
+      <div class="history-empty">No summaries yet.</div>
+    </div>
+
+    <div style="padding: 10px 14px; border-top: 1px solid var(--border); flex-shrink:0">
+      <button class="btn-secondary" id="btn-back-from-history" style="width:100%">&#8592; Back</button>
+    </div>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
